@@ -1,0 +1,28 @@
+.step-progress-chart{
+    width: 600px;
+    height: 300px;
+}
+
+.step-progress-chart .lineA {
+    fill: none;
+    stroke: #BE90D4;
+    opacity: 0.25;
+    stroke-width: 10;
+}
+
+.step-progress-chart .lineB {
+    fill: none;
+    stroke: #7CB342;
+    opacity: 0.25;
+    stroke-width: 10;
+}
+
+.step-progress-chart .dotA {
+    fill: #ffab00;
+    stroke: #fff;
+}
+
+.step-progress-chart .dotB {
+    fill: #0088FF;
+    stroke: #fff;
+}

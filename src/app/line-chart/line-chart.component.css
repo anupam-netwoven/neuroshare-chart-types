@@ -1,0 +1,26 @@
+.line-chart{
+    width: 600px;
+    height: 300px;
+}
+
+.line-chart .lineA {
+    fill: none;
+    stroke: #EA700D;
+    stroke-width: 3;
+}
+
+.line-chart .lineB {
+    fill: none;
+    stroke: #31859B;
+    stroke-width: 3;
+}
+
+.line-chart .dotA {
+    fill: #EA700D;
+    stroke: #fff;
+}
+
+.line-chart .dotB {
+    fill: #31859B;
+    stroke: #fff;
+}
