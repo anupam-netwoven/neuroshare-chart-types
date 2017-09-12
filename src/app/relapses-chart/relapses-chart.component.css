@@ -1,0 +1,22 @@
+.line-chart{
+    width: 600px;
+    height: 300px;
+}
+
+.line-chart .lineA {
+    fill: none;
+    stroke:red;
+    stroke-width: 1.5;
+}
+
+
+.line-chart .dotA {
+    fill:red;
+    stroke: #fff;
+    width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 100px solid red;
+}
+

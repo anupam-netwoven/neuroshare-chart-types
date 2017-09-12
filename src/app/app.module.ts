@@ -6,6 +6,7 @@ import { ChartsContainerComponent } from './charts-container/charts-container.co
 import { GanttChartComponent } from './gantt-chart/gantt-chart.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { StepProgressChartComponent } from './step-progress-chart/step-progress-chart.component';
+import { RelapsesChartComponent } from './relapses-chart/relapses-chart.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { StepProgressChartComponent } from './step-progress-chart/step-progress-
     ChartsContainerComponent,
     GanttChartComponent,
     LineChartComponent,
-    StepProgressChartComponent
+    StepProgressChartComponent,
+    RelapsesChartComponent
   ],
   imports: [
     BrowserModule
