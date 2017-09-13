@@ -22,7 +22,7 @@ export class RelapsesChartComponent implements OnInit {
 
   private xDomain: Array<number> = [0, 100];
   private yDomain: Array<number> = [0, 50];
-  
+
 
   private datasetA: Array<any> = [
     { "x": 10, "y": 50 },
@@ -30,18 +30,13 @@ export class RelapsesChartComponent implements OnInit {
     { "x": 80, "y": 100 },
   ];
 
-  // private datasetB: Array<any> = [
-  //   { "x": 20, "y": 0 },
-  //   { "x": 50, "y": 50 },
-  //   { "x": 90, "y": 100 },
-  // ];
 
   constructor() { }
 
   ngOnInit() {
     this.createChart();
   }
-
+  
   createChart() {
     let element = this.chartContainer.nativeElement;
     this.width = element.offsetWidth - this.margin.left - this.margin.right;
@@ -52,10 +47,7 @@ export class RelapsesChartComponent implements OnInit {
     let lineA = d3.line<any>()
       .x((d: any) => this.xScale(d.x))
       .y(40);
-
-    // let lineB = d3.line<any>()
-    //   .x((d: any) => this.xScale(d.x))
-    //   .y(100);
+      
 
     let svg = d3.select(element).append("svg")
       .attr("width", element.offsetWidth)
@@ -69,110 +61,31 @@ export class RelapsesChartComponent implements OnInit {
       .call(d3.axisBottom(this.xScale));
 
     svg.append("path")
-      .datum(this.datasetA)
+      //.datum(this.datasetA)
+      .datum([
+        { "x": d3.min(this.xDomain), "y": 50 },
+        { "x": d3.max(this.xDomain), "y": 50 }
+      ])
       .attr("class", "lineA")
       .attr("d", lineA);
 
-    // svg.append("path")
-    //   .datum(this.datasetB)
-    //   .attr("class", "lineB")
-    //   .attr("d", lineB);
+      
 
-    // let gradA = svg
-    //   .append("defs")
-    //   .append("linearGradient")
-    //   .attr("id", "gradA")
-    //   .attr("x1", "0%")
-    //   .attr("x2", "0%")
-    //   .attr("y1", "100%")
-    //   .attr("y2", "0%");
-
-    // gradA.append("stop").attr("offset", "50%").style("stop-color", "red");
-    // gradA.append("stop").attr("offset", "50%").style("stop-color", "white");
-
-    // let gradB = svg
-    //   .append("defs")
-    //   .append("linearGradient")
-    //   .attr("id", "gradB")
-    //   .attr("x1", "0%")
-    //   .attr("x2", "0%")
-    //   .attr("y1", "100%")
-    //   .attr("y2", "0%");
-
-    // gradB.append("stop").attr("offset", "50%").style("stop-color", "#7CB342");
-    // gradB.append("stop").attr("offset", "50%").style("stop-color", "white");
-    let arc = d3.symbol().type(d3.symbolTriangle).size(100);
-    
-
-    svg.selectAll(".dotA")
+    let arc = d3.symbol().type(d3.symbolTriangle).size(100);
+   svg.selectAll(".dotA")
       .data(this.datasetA)
-      //.enter().append("rect")
-      //.attr("class", "bar")
-      //.enter()
       .enter().append('path')
-      //.datum(this.datasetA)
-      .attr('d', arc)
-      //.attr("transform", "translate(" +this.xScale(d=>d.x) + "," + "40" + ")")
-    //   .attr("transform", "translate("+ "," + this.height + ")")
-      .attr("transform", function(d) {
-        //debugger;
-        return "translate(" + d.x + 
-                          "," + "40" + ") rotate(180)";
-    })
-   // .call(this.xAxis)
-    // .attr("cx", d => this.xScale(d.x))
-    //.attr('transform', `rotate(180)`)
-      .attr('class', 'x-axis-arrow')
-     // .attr('transform', `translate(${this.margin.left }, ${this.margin.left}) rotate(180)`)
-      //.attr("cx", d => this.xScale(d.x))
-      //.attr("cy", 40)
-      //.append("circle")
-      //.attr("class", "dotA")
+      .attr('d', arc)
      
-      //.attr("cx", d => this.xScale(d.x))
-      //.attr("cy", 40)
-      //.attr("r", 12)
-      .style("stroke", "red")
-      .style("fill", d => {
-        let returnColor;
-        if (d.y == 0) {
-          returnColor = "#FFF"
-        }
-         else {
-          returnColor = "red"
-        }
-        // else if (d.y == 100) {
-        //   returnColor = "red"
-        // }
-        // else {
-        //   returnColor = "url(#gradA)"
-        // }
-        return returnColor;
+      .attr('transform', d => {
+        return `translate(${(this.xScale(d.x))}, 40) rotate(180)`;
       })
 
-
-    // svg.selectAll(".dotB")
-    //   .data(this.datasetB)
-    //   .enter()
-    //   .append("circle")
-    //   .attr("class", "dotB")
-    //   .attr("cx", d => this.xScale(d.x))
-    //   .attr("cy", 100)
-    //   .attr("r", 12)
-    //   .style("stroke", "#7CB342")
-    //   .style("fill", d => {
-    //     let returnColor;
-    //     if (d.y == 0) {
-    //       returnColor = "#FFF"
-    //     }
-    //     else if (d.y == 100) {
-    //       returnColor = "#7CB342"
-    //     }
-    //     else {
-    //       returnColor = "url(#gradB)"
-    //     }
-    //     return returnColor;
-    //   })
+      .attr('class', 'x-axis-arrow')
+      .style("stroke", "red")
+      .style("fill", d => {return d.y?'red':'#fff';
+        
+      })
 
 
   }
